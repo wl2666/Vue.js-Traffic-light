@@ -7,22 +7,21 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div id="controlPanel">
-    <h1 id="stopButton" class="button">Stop</h1>
-    <h1 id="slowButton" class="button">Slow</h1>
-    <h1 id="goButton" class="button">Go</h1>
-  </div>
-  <div id="traffic-light">
-    <div id="stopLight" class="bulb"></div>
-    <div id="slowLight" class="bulb"></div>
-    <div id="goLight" class="bulb"></div>
+  <div id="app">
+    <h1>{{ title }}</h3>
+    <div id="traffic-light">
+      <div :class="[ isClicked === false ? redLight.activeColor : redLight.inactiveColor ]"></div>
+      <div :class="[ isClicked === true && turnYellow === false ? yellowLight.activeColor : yellowLight.inactiveColor ]"></div>
+      <div :class="[ turnYellow === true ? greenLight.activeColor : greenLight.inactiveColor ]"></div>
+    </div>
+    <button class="btn-info" @click="changeLightColor">Cross the road</button>
   </div>
 
-  <!-- IMPORT Vue.js -->
+  <!-- Import Vue.js -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="app.js" type="text/javascript"></script>
 
